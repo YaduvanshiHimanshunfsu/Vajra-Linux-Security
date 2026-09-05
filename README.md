@@ -232,33 +232,7 @@ Navigate to `http://localhost:8000` to inspect real-time causal DAGs, trigger si
 
 ---
 
-## 👥 Authors & Affiliation
 
-**School of Cyber Security and Digital Forensics**  
-**National Forensic Sciences University (NFSU), Tripura Campus, India**
-
-* **Himanshu Yadav** — *Lead Researcher & Core Architecture* (`himanshu.yadav@nfsu.ac.in`)
-* **Deepak Kumar Ravi** — *eBPF Kernel Telemetry & Provenance Graphs*
-* **Ayush Trivedi** — *Statistical Anomaly Modeling & PSI Forecasting*
-* **Albert Gautam** — *ProvX Counterfactual Explanations & XAI*
-* **Umesh Gupta** — *Reversible SOAR Containment & Digital Forensics*
-
----
-
-## 📜 Citation
-
-If you use Vajra's algorithms, eBPF probes, or testbed in your research, please cite:
-
-```bibtex
-@inproceedings{vajra2027,
-  author    = {Himanshu Yadav and Albert Gautam and Deepak Kumar Ravi and Ayush Trivedi and Umesh Gupta},
-  title     = {Vajra: An Explainable and Reversible Linux Security \& Reliability Assistant via eBPF Causal Provenance and Minimal Counterfactuals},
-  booktitle = {Proceedings of the International Symposium on Research in Attacks, Intrusions, and Defenses (RAID)},
-  year      = {2027}
-}
-```
-
----
 
 ## 📄 License
 Licensed under the [Apache License, Version 2.0](LICENSE).
