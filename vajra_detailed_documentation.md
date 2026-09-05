@@ -1,8 +1,8 @@
-# 📘 VAJRA — Complete Detailed Documentation
+# 📘 VAJRA — Complete Technical Architecture & Specifications
 > **Project**: वज्र (VAJRA) — AI-Powered Explainable Linux Security & Reliability Assistant
-> **Team**: Team_Red_Eagle | **Institution**: NFSU, Tripura
-> **Competition**: SSM Hackathon BY CDAC 2026
-> **Track**: Integration of AI Capabilities in the OS Ecosystem (Linux Based)
+> **Institution**: National Forensic Sciences University (NFSU), Tripura Campus
+> **Research Track**: eBPF Causal Provenance & ProvX Counterfactual Optimization
+> **Repository**: https://github.com/YaduvanshiHimanshunfsu/Vajra-Linux-Security
 
 ---
 
@@ -689,6 +689,5 @@ assistant that solves the 3 fundamental failures of modern host security:
 
 ---
 
-*वज्र (VAJRA) — Built by Team_Red_Eagle for SSM Hackathon BY CDAC 2026*
-*Institution: National Forensic Sciences University (NFSU), Gandhinagar*
-*GitHub: github.com/YaduvanshiHimanshunfsu/CDAC_Hackathon*
+*वज्र (VAJRA) — School of Cyber Security and Digital Forensics, NFSU*
+*Repository: https://github.com/YaduvanshiHimanshunfsu/Vajra-Linux-Security*

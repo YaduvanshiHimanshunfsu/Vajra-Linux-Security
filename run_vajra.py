@@ -68,12 +68,11 @@ def print_banner() -> None:
 ║    AI-Powered Explainable Linux Security & Reliability Assistant               ║
 ║           for Kernel-Level Intrusion & Behavioural Threat Detection            ║
 ╠══════════════════════════════════════════════════════════════════════════════════╣{R}
-{WH}║  {YL}{BD}Competition{R}{WH}  :  SSM Hackathon BY CDAC  (2026)                                       ║
-║  {YL}{BD}Track{R}{WH}        :  Integration of AI Capabilities in the OS Ecosystem (Linux)     ║
-║  {YL}{BD}Team{R}{WH}         :  {RD}{BD}Team_Red_Eagle{R}{WH}                                                     ║
-║  {YL}{BD}Problem{R}{WH}      :  Kernel eBPF Telemetry  →  Laplace Markov Anomaly Scoring        ║
-║                 →  PSI Failure Forecasting  →  ProvX Counterfactuals          ║
-║                 →  Reversible cgroup-v2 Containment  →  Grounded On-Prem LLM  ║
+{WH}║  {YL}{BD}Domain{R}{WH}       :  Linux Kernel Telemetry, Causal Provenance & Explainable AI (XAI) ║
+║  {YL}{BD}Institution{R}{WH}  :  School of Cyber Security and Digital Forensics, NFSU             ║
+║  {YL}{BD}Core Models{R}{WH}  :  eBPF CO-RE Telemetry  →  Laplace Markov Anomaly Scoring          ║
+║                 →  PSI Failure Forecasting  →  ProvX Greedy L₀ Counterfactuals ║
+║                 →  Reversible cgroup-v2 Containment  →  Grounded On-Prem LLM   ║
 {CY}{BD}╚══════════════════════════════════════════════════════════════════════════════════════╝{R}
 """)
 
@@ -389,9 +388,9 @@ def print_project_info() -> None:
 
     rows = [
         ("Project Name",      "वज्र (VAJRA)"),
-        ("Competition",       "SSM Hackathon BY CDAC  (2026)"),
-        ("Track",             "Integration of AI Capabilities in the OS Ecosystem (Linux Based)"),
-        ("Team Name",         "Team_Red_Eagle"),
+        ("Domain",            "Linux Kernel Telemetry, Causal Provenance & Explainable AI (XAI)"),
+        ("Institution",       "School of Cyber Security and Digital Forensics, NFSU"),
+        ("Paper Venue",       "IEEE Conference on Systems & Security (RAID / ACSAC / EuroSec)"),
         ("Category",          "AI + Linux Kernel + Runtime Security"),
         ("", ""),
         ("Problem Statement", "Linux systems lack a single explainable, low-overhead runtime tool that"),
@@ -502,7 +501,7 @@ def main_menu() -> None:
             print_project_info()
 
         elif choice == "7":
-            print(f"\n  {GR}Exiting Vajra. Good luck, Team_Red_Eagle at the CDAC Hackathon! ⚡{R}\n")
+            print(f"\n  {GR}Exiting Vajra Research Evaluation Platform. ⚡{R}\n")
             sys.exit(0)
 
         else:
@@ -518,8 +517,8 @@ def parse_args() -> None:
     parser = argparse.ArgumentParser(
         prog="run_vajra.py",
         description=(
-            "⚡ वज्र (VAJRA) — Master Runner\n"
-            "   Team_Red_Eagle | SSM Hackathon BY CDAC 2026"
+            "⚡ वज्र (VAJRA) — Research Evaluation Platform\n"
+            "   NFSU School of Cyber Security and Digital Forensics"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

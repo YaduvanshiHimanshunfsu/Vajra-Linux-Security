@@ -1,8 +1,7 @@
-# PROJECT_DETAILS.md
 # Project: वज्र (Vajra) — AI-Powered Explainable Linux Security & Reliability Assistant
-**Track**: Integration of AI Capabilities in the OS Ecosystem (Linux Based)  
-**Team**: Team_Red_Eagle  
-**Repository**: https://github.com/YaduvanshiHimanshunfsu/CDAC_Hackathon  
+**Domain**: Linux Kernel Security, Causal Provenance & Explainable AI (XAI)  
+**Institution**: School of Cyber Security & Digital Forensics, NFSU  
+**Repository**: https://github.com/YaduvanshiHimanshunfsu/Vajra-Linux-Security  
 
 ---
 

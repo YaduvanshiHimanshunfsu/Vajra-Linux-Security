@@ -1,12 +1,12 @@
 # ⚡ वज्र (Vajra) — System Architecture Diagram Specification
-**Project**: `7. वज्र (Vajra)` | **Team**: `Team_Red_Eagle`  
-**Problem Statement**: *AI-Powered Explainable Linux Security Assistant for Kernel-Level Intrusion & Behavioral Threat Detection*
+**Domain**: Linux Kernel Security, Causal Provenance & Explainable AI (XAI)  
+**Institution**: School of Cyber Security & Digital Forensics, NFSU  
 
 ---
 
 ## 🎯 Architecture Overview
 
-This document provides the complete structural architecture and data-flow diagrams for **वज्र (Vajra)**. You can copy the Mermaid code below into [mermaid.live](https://mermaid.live) or your markdown previewer to export an official high-resolution **PNG/JPEG (under 300KB)** for your hackathon submission.
+This document provides the complete structural architecture and data-flow diagrams for **वज्र (Vajra)**. You can copy the Mermaid code below into [mermaid.live](https://mermaid.live) or your markdown previewer to render high-resolution vector diagrams for technical reports and documentation.
 
 ---
 
@@ -156,9 +156,7 @@ sequenceDiagram
 
 ---
 
-## 🖼️ How to Export PNG/JPG for Hackathon Upload (Max 300KB)
-
+## 🖼️ How to Render Vector Diagrams for Technical Papers
 1. Open **[mermaid.live](https://mermaid.live)** in your browser.
 2. Copy and paste the Mermaid code from **Section 1** into the editor.
-3. Click **Download PNG** or **Download JPEG** in the bottom-right corner.
-4. The generated image will be crisp, professional, perfectly color-coded, and well under the **300KB** portal limit.
+3. Click **Download SVG** or **Download PNG** to generate vector quality figures for academic papers and documentation.

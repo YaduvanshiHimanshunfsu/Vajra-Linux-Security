@@ -12,7 +12,7 @@ __pycache__/
 # Rust Build Artifacts
 target/
 
-# Editors and IDEs
+# Operating Systems & IDEs
 .idea/
 .vscode/
 *.swp
@@ -20,7 +20,7 @@ target/
 Thumbs.db
 .DS_Store
 
-# Local State, Logs & Sensitive Data
+# Local State, Logs & Environment Variables
 .env
 data/
 artifacts/
@@ -30,34 +30,7 @@ artifacts/
 bpf/*.o
 bpf/vmlinux.h
 
-# Media, Large Binary Files & Slides
-*.png
-*.jpg
-*.jpeg
-*.webp
-*.gif
-*.pptx
-*.pdf
-screenshots/
-screenshot/
-.user_uploaded/
-
-# Hackathon / Presentation Scratch & Helper Scripts
-generate_pptx.py
-compress_pdf.py
-compress_pdf_native.py
-check_streams.py
-inspect_images.py
-inspect_pdf.py
-pitch.md
-pptx_help.md
-implementation_plan2
-implementation_plan_to research paper
-docs/canva-gemini-presentation-prompts-light-theme.md
-docs/presentation-slides-copy-paste-with-diagrams.md
-docs/hackathon-submission-form-answers.md
-
-# LaTeX Build Intermediates (Keep source .tex, .bib, .cls, Makefile)
+# LaTeX Build Intermediates (Preserves source .tex, .bib, .cls, Makefile)
 paper/*.aux
 paper/*.bbl
 paper/*.blg
