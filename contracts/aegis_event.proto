@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package aegisgraph.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message ProcessIdentity {
+  string process_id = 1;
+  uint32 pid = 2;
+  uint32 ppid = 3;
+  string executable = 4;
+  string command_line_hash = 5;
+  uint32 uid = 6;
+  repeated string capabilities = 7;
+}
+
+message WorkloadIdentity {
+  string workload_id = 1;
+  string systemd_unit = 2;
+  string container_id = 3;
+  string image_digest = 4;
+  string cgroup = 5;
+  string environment = 6;
+}
+
+enum VerificationState {
+  VERIFICATION_STATE_UNSPECIFIED = 0;
+  VERIFIED = 1;
+  FAILED = 2;
+  UNAVAILABLE = 3;
+  PENDING = 4;
+}
+
+message TrustContext {
+  VerificationState host_attestation = 1;
+  VerificationState agent_integrity = 2;
+  VerificationState artifact_verification = 3;
+  string runtime_binary_sha256 = 4;
+  string artifact_signer_identity = 5;
+  string sbom_reference = 6;
+  string slsa_provenance_reference = 7;
+}
+
+message LineageContext {
+  string causal_trace_id = 1;
+  string parent_event_id = 2;
+  string graph_partition_id = 3;
+}
+
+message SecurityEvent {
+  string schema_version = 1;
+  string event_id = 2;
+  google.protobuf.Timestamp observed_at = 3;
+  string host_id = 4;
+  string boot_id = 5;
+  string event_type = 6;
+  ProcessIdentity subject = 7;
+  string object_type = 8;
+  string object_value = 9;
+  WorkloadIdentity workload = 10;
+  string result = 11;
+  map<string, string> attributes = 12;
+  float sensor_confidence = 13;
+  TrustContext trust = 14;
+  LineageContext lineage = 15;
+}

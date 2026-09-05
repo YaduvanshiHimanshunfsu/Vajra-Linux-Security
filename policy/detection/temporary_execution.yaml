@@ -1,0 +1,16 @@
+id: AG-RULE-001
+version: 1
+title: Execution from a temporary filesystem path
+enabled: true
+when:
+  event_type: PROCESS_EXEC
+  object_type: binary
+  path_prefixes:
+    - /tmp/
+    - /dev/shm/
+then:
+  severity: high
+  mitre_techniques:
+    - T1059
+  response_mode: analyst_approval
+  recommended_action: Preserve evidence and review the process before containment.

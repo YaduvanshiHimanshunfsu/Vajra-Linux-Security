@@ -1,0 +1,79 @@
+{
+  "testbed_specs": {
+    "hostname": "LENOVO",
+    "os": "Windows 10",
+    "architecture": "AMD64",
+    "python_version": "3.11.9",
+    "kernel_release": "10",
+    "btf_available": "No",
+    "psi_available": "No",
+    "cpu_cores": "18",
+    "total_ram_gb": "Unknown"
+  },
+  "comparative_evaluation": [
+    {
+      "scenario": "Scenario 01: Normal Web",
+      "description": "Benign Lifecycle",
+      "vajra_score": 0.0,
+      "vajra_verdict": "Clean (0.00)",
+      "falco_verdict": "Clean",
+      "auditd_verdict": "Clean",
+      "explainable": "N/A",
+      "latency_ms": 0.13
+    },
+    {
+      "scenario": "Scenario 02: /tmp RevShell",
+      "description": "Process Exec from /tmp",
+      "vajra_score": 0.9994,
+      "vajra_verdict": "Alert (1.00)",
+      "falco_verdict": "Alert",
+      "auditd_verdict": "Alert",
+      "explainable": "ProvX L0 Minimal Delta",
+      "latency_ms": 1.12
+    },
+    {
+      "scenario": "Scenario 03: LotL Exfil",
+      "description": "Decoy /etc/shadow read",
+      "vajra_score": 0.9992,
+      "vajra_verdict": "Alert (1.00)",
+      "falco_verdict": "Alert (Sensitive Mount)",
+      "auditd_verdict": "Missed (LotL curl)",
+      "explainable": "ProvX L0 Minimal Delta",
+      "latency_ms": 0.11
+    },
+    {
+      "scenario": "Scenario 04: PSI OOM Surge",
+      "description": "Memory Pressure Spike",
+      "vajra_score": 0.99,
+      "vajra_verdict": "Alert (0.99 Rel)",
+      "falco_verdict": "N/A (No PSI hook)",
+      "auditd_verdict": "N/A (No PSI hook)",
+      "explainable": "EWMA Stall Velocity",
+      "latency_ms": 0.09
+    },
+    {
+      "scenario": "Scenario 05: TPM Attest Fail",
+      "description": "Hardware PCR Mismatch",
+      "vajra_score": 0.99,
+      "vajra_verdict": "Locked (Trust: 0.00)",
+      "falco_verdict": "N/A (No TPM hook)",
+      "auditd_verdict": "N/A (No TPM hook)",
+      "explainable": "PCR Quote Mismatch",
+      "latency_ms": 0.09
+    }
+  ],
+  "runtime_overhead": {
+    "iterations": 500.0,
+    "throughput_eps": 155187.9,
+    "latency_p50_ms": 0.0061,
+    "latency_p95_ms": 0.0083,
+    "latency_p99_ms": 0.0091,
+    "memory_rss_mb": 23.19,
+    "estimated_cpu_pct": 1.4
+  },
+  "false_positive_rate": {
+    "total_benign_events": 1000.0,
+    "false_positive_alerts": 0.0,
+    "false_positive_rate_pct": 0.0
+  }
+}

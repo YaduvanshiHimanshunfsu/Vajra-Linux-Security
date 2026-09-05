@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>वज्र (Vajra) | AI Linux Security Assistant | Team Red Eagle</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon">⚡</div>
+            <div class="logo-title">
+                <h1>वज्र (VAJRA)</h1>
+                <span>TEAM RED EAGLE | EXPLAINABLE LINUX RUNTIME SECURITY ASSISTANT</span>
+            </div>
+        </div>
+
+        <!-- Telemetry Performance Overhead Bar -->
+        <div class="telemetry-bar">
+            <div class="metric-pill">
+                <span class="pill-label">CPU:</span>
+                <strong id="metric-cpu" class="pill-val">1.2%</strong>
+            </div>
+            <div class="metric-pill">
+                <span class="pill-label">RAM:</span>
+                <strong id="metric-ram" class="pill-val">36.4 MB</strong>
+            </div>
+            <div class="metric-pill">
+                <span class="pill-label">Latency:</span>
+                <strong id="metric-lat" class="pill-val">4.5 ms</strong>
+            </div>
+            <div class="metric-pill">
+                <span class="pill-label">Drops:</span>
+                <strong id="metric-drops" class="pill-val">0.00%</strong>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <div class="status-badge">
+                <span class="status-dot active"></span>
+                <span>Sensor: <strong id="sensor-state">eBPF Telemetry Live</strong></span>
+            </div>
+            <div class="status-badge">
+                <span class="status-dot" id="trust-dot"></span>
+                <span>TPM: <strong id="trust-state">Hardware Verified</strong></span>
+            </div>
+            <div class="status-badge">
+                <span>Threat: <strong id="global-risk" style="color: var(--low);">0.00</strong></span>
+            </div>
+            <button class="nav-btn-export" onclick="downloadMitreLayer()" title="Download standard MITRE ATT&CK Navigator Layer v4 JSON">
+                📥 MITRE Matrix
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Grid Dashboard -->
+    <div class="dashboard-grid">
+        <!-- Left Column: Scenario Triggers & Incident Stream -->
+        <div class="card">
+            <div class="card-header">
+                <h2>⚡ Live Scenario Lab</h2>
+            </div>
+            <div class="card-body">
+                <div class="sim-controls">
+                    <button class="sim-btn" onclick="triggerScenario('normal')">
+                        <span>🟢 1. Normal Workload Spawn</span>
+                        <small>Train Baseline</small>
+                    </button>
+                    <button class="sim-btn danger" onclick="triggerScenario('reverse_shell')">
+                        <span>🔴 2. /tmp Reverse Shell</span>
+                        <small>Rule + Anomaly</small>
+                    </button>
+                    <button class="sim-btn danger" onclick="triggerScenario('lotl')">
+                        <span>🔴 3. Living-off-the-Land Exfil</span>
+                        <small>Decoy Secret</small>
+                    </button>
+                    <button class="sim-btn danger" onclick="triggerScenario('memory_leak')">
+                        <span>⚠️ 4. PSI Memory Pressure Spike</span>
+                        <small>Failure Forecast</small>
+                    </button>
+                    <button class="sim-btn danger" onclick="triggerScenario('attestation_fail')">
+                        <span>🛑 5. TPM Attestation Compromise</span>
+                        <small>Trust Freeze</small>
+                    </button>
+                </div>
+
+                <div class="card-header" style="padding-left:0; padding-right:0; margin-top:0.5rem;">
+                    <h2>📡 Threat & Failure Feed</h2>
+                </div>
+                <div id="incidents-feed" style="display:flex; flex-direction:column; gap:0.5rem; flex:1; overflow-y:auto;">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Column: Provenance Graph & Explainability -->
+        <div class="center-column">
+            <!-- Causal Provenance Graph Card -->
+            <div class="card" style="flex: 1.2;">
+                <div class="card-header">
+                    <h2>🕸️ Causal Provenance Lineage Graph</h2>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">Process Ancestry & Socket Tracing</span>
+                </div>
+                <div class="card-body" style="padding:0.75rem;">
+                    <div id="graph-container">
+                        <canvas id="graph-canvas" class="graph-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explainability & Counterfactual Panel -->
+            <div class="card" style="flex: 1;">
+                <div class="card-header">
+                    <h2>🧠 AI Explainability & Grounded Reasoning</h2>
+                    <span id="selected-incident-id" style="font-size:0.75rem; color:var(--primary); font-family:var(--font-mono);">INCIDENT: NONE</span>
+                </div>
+                <div class="card-body">
+                    <div class="explain-box">
+                        <h3>🔍 Minimal Counterfactual Explanation ("What If?")</h3>
+                        <div id="counterfactual-display" class="counterfactual-text">
+                            Select an incident from the feed or trigger a test scenario to inspect why the anomaly was flagged and what minimal facts would flip the model verdict to benign.
+                        </div>
+                    </div>
+
+                    <div style="margin-top:0.5rem;">
+                        <h3 style="font-size:0.8rem; color:var(--text-main); margin-bottom:0.4rem;">Empirical Detection Evidence & MITRE ATT&CK:</h3>
+                        <ul id="evidence-display" class="evidence-list">
+                            <li>Awaiting incoming Linux runtime events...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: AI Assistant Chat & Remediation Console -->
+        <div class="card">
+            <div class="card-header">
+                <h2>🤖 वज्र Security Operations Assistant</h2>
+            </div>
+            <div class="card-body" style="display:flex; flex-direction:column; height:100%;">
+                <!-- Chat Area -->
+                <div class="chat-container" style="flex:1;">
+                    <div id="chat-messages" class="chat-messages">
+                        <div class="chat-msg assistant">
+                            👋 <strong>वज्र (Vajra) Assistant</strong>: I am monitoring Linux kernel telemetry, behavioral Markov baselines, and PSI pressure with zero-hallucination grounded validation. How can I assist you with threat detection or containment?
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input id="chat-input" type="text" class="chat-input" placeholder="Ask about root cause, MITRE techniques, or actions..." onkeypress="handleChatKey(event)">
+                        <button class="chat-send-btn" onclick="sendChat()">Send</button>
+                    </div>
+                </div>
+
+                <!-- Remediation Console -->
+                <div style="margin-top:1rem; border-top:1px solid var(--border-color); padding-top:0.75rem;">
+                    <h2 style="font-size:0.85rem; text-transform:uppercase; color:var(--primary); margin-bottom:0.4rem;">
+                        🛡️ Policy Containment Console
+                    </h2>
+                    <div class="action-grid">
+                        <button class="action-btn" onclick="executeAction('FREEZE_CGROUP')">❄️ Freeze Cgroup</button>
+                        <button class="action-btn" onclick="executeAction('BLOCK_EGRESS')">🚫 Block Egress</button>
+                        <button class="action-btn" onclick="executeAction('TERMINATE_PROCESS')">⚡ Kill PID</button>
+                        <button class="action-btn secondary" onclick="executeAction('QUARANTINE_CONTAINER')">📦 Isolate Container</button>
+                    </div>
+                    <div id="active-actions" style="margin-top:0.5rem; font-size:0.75rem; color:var(--text-muted);">
+                        Active Rollbacks: <strong>0</strong> (30 min TTL Auto-Reversion)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

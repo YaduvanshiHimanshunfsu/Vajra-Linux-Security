@@ -1,0 +1,68 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.uv-cache/
+.uv-python/
+
+# Rust Build Artifacts
+target/
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
+
+# Local State, Logs & Sensitive Data
+.env
+data/
+artifacts/
+*.log
+
+# eBPF Kernel Build Outputs
+bpf/*.o
+bpf/vmlinux.h
+
+# Media, Large Binary Files & Slides
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.pptx
+*.pdf
+screenshots/
+screenshot/
+.user_uploaded/
+
+# Hackathon / Presentation Scratch & Helper Scripts
+generate_pptx.py
+compress_pdf.py
+compress_pdf_native.py
+check_streams.py
+inspect_images.py
+inspect_pdf.py
+pitch.md
+pptx_help.md
+implementation_plan2
+implementation_plan_to research paper
+docs/canva-gemini-presentation-prompts-light-theme.md
+docs/presentation-slides-copy-paste-with-diagrams.md
+docs/hackathon-submission-form-answers.md
+
+# LaTeX Build Intermediates (Keep source .tex, .bib, .cls, Makefile)
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.synctex.gz
+paper/figures/*.aux

@@ -1,0 +1,32 @@
+version: 1
+defaults:
+  mode: recommend
+  required_sensor_confidence: 0.95
+  minimum_security_score: 0.90
+actions:
+  freeze_cgroup:
+    allowed: true
+    requires_rule_match: false
+    requires_analyst_approval: false
+    max_ttl_minutes: 30
+    rollback: unfreeze_cgroup
+  temporary_egress_block:
+    allowed: true
+    requires_rule_match: true
+    max_ttl_minutes: 30
+    rollback: remove_matching_network_rule
+  terminate_process:
+    allowed: true
+    requires_rule_match: true
+    requires_analyst_approval: true
+    max_ttl_minutes: 0
+    rollback: none
+  quarantine_container:
+    allowed: true
+    requires_analyst_approval: true
+    max_ttl_minutes: 60
+    rollback: restore_previous_network_policy
+  stop_systemd_unit:
+    allowed: false
+  delete_file:
+    allowed: false

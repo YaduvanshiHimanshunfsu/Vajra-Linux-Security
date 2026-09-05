@@ -1,0 +1,43 @@
+% Vajra Causal Provenance DAG and Greedy L0 Counterfactual Optimization
+\begin{tikzpicture}[
+    scale=0.85, every node/.style={transform shape},
+    proc/.style={circle, draw=blue!80!black, fill=blue!10, thick, minimum size=1.0cm, align=center, font=\sffamily\scriptsize},
+    malproc/.style={circle, draw=red!80!black, fill=red!15, ultra thick, minimum size=1.0cm, align=center, font=\sffamily\scriptsize},
+    cfproc/.style={circle, draw=green!70!black, fill=green!15, thick, dashed, minimum size=1.0cm, align=center, font=\sffamily\scriptsize},
+    entity/.style={rectangle, draw=purple!80!black, fill=purple!10, rounded corners=2pt, minimum height=0.7cm, font=\sffamily\tiny, align=center},
+    pert/.style={rectangle, draw=orange!90!black, fill=orange!12, rounded corners=3pt, thick, font=\sffamily\tiny, align=left, inner sep=4pt},
+    arrow/.style={-{Stealth[scale=1.0]}, thick, draw=black!70},
+    carrow/.style={-{Stealth[scale=1.0]}, thick, draw=red!70, dashed},
+    cfarrow/.style={-{Stealth[scale=1.0]}, thick, draw=green!70!black}
+]
+
+% Process Tree Vertices
+\node[proc] (p1) at (0, 0) {PID 1\\\texttt{systemd}};
+\node[proc] (p2) at (2.2, 0) {PID 1024\\\texttt{sshd}};
+\node[proc] (p3) at (4.5, 0) {PID 2048\\\texttt{bash}};
+\node[malproc] (p4) at (7.2, 0.7) {PID 3012\\\texttt{curl}};
+\node[malproc] (p5) at (7.2, -0.7) {PID 3015\\\texttt{payload}};
+
+% Side Entities
+\node[entity] (f1) at (10.0, 0.7) {\textbf{File Entity}\\\texttt{/tmp/rev.sh}};
+\node[entity] (net1) at (10.0, -0.7) {\textbf{Socket Entity}\\\texttt{198.51.100.23:4444}};
+
+% Causal Edges
+\draw[arrow] (p1) -- (p2) node[midway, above, font=\tiny] {\texttt{FORK}};
+\draw[arrow] (p2) -- (p3) node[midway, above, font=\tiny] {\texttt{EXEC}};
+\draw[arrow] (p3) -- (p4) node[midway, above, sloped, font=\tiny] {\texttt{SPAWN}};
+\draw[carrow] (p3) -- (p5) node[midway, below, sloped, font=\tiny] {\texttt{ANOMALOUS}};
+\draw[carrow] (p4) -- (f1) node[midway, above, font=\tiny] {\texttt{WRITE}};
+\draw[carrow] (p5) -- (net1) node[midway, above, font=\tiny] {\texttt{CONNECT}};
+
+% Counterfactual Perturbation Box
+\node[pert] (cf_box) at (5.0, -2.6) {
+    \textbf{Greedy $L_0$ Minimal Counterfactual Cut ($\delta^*$):}\\
+    $\delta_1$: Binary Path $\leftarrow$ \texttt{/usr/local/bin/worker} (Clears Rule: Temp Exec) $\rightarrow \Delta R = -0.50$\\
+    $\delta_2$: Ancestor Transition $\leftarrow$ \texttt{systemd $\to$ worker} (In Baseline) $\rightarrow \Delta R = -0.50$\\
+    \textbf{Result:} $R(e \oplus \delta^*) = 0.00 < \theta_{\text{benign}} = 0.20$ \quad ($|\delta^*| = 2$ minimal edits)
+};
+
+\draw[cfarrow] (cf_box.north) -- (p5.south) node[midway, right, font=\tiny, text=green!60!black] {Minimal Actionable Fix};
+
+\end{tikzpicture}
